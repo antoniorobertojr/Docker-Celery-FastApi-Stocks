@@ -1,0 +1,8 @@
+FROM tiangolo/uvicorn-gunicorn:python3.8
+
+LABEL maintainer="Antonio Machado Jr <juniormach96@gmail.com>"
+
+COPY requirements_app.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+COPY . /app

@@ -1,0 +1,11 @@
+FROM python:3.8
+
+LABEL maintainer="Antonio Machado Jr <juniormach96@gmail.com>"
+
+COPY requirements_etl.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+COPY . /etl
+WORKDIR /etl
+
+ENTRYPOINT celery -A tasks worker --loglevel=info

@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  fastapi:
+    build:
+      context: ./app
+      dockerfile: DockerfileApp
+    env_file:
+      - .env
+    ports:
+      - "5000:80"
+    depends_on:
+      - redis_server
+      - worker
+  worker:
+    build:
+      dockerfile: DockerfileETL
+      context: ./celery
+    env_file:
+      - .env
+    depends_on:
+      - redis_server
+  redis_server:
+    image: redis
