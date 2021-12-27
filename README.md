@@ -14,7 +14,7 @@ Before running the api, make sure you have docker installed on your machine.
 git clone https://github.com/juniormach96/stocks .
 ```
 
-2-Build the docker-compose services
+2-Build the docker-compose services and run them
 
 ```bash
 docker-compose up --build
