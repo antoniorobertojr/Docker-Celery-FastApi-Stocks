@@ -27,5 +27,5 @@ Access the endpoints through http://localhost:5000/docs
 ## Future improvements
 
 - Write more tests on celery and api as well
-- Tests more machine learning algorithms
+- Test more machine learning algorithms
 - Hyperparameter tuning the algos with best scores
