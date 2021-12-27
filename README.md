@@ -1,38 +1,31 @@
-# Stocks
+# Docker-Celery-FastApi-Stocks
 
-Stocks is a Python project to predict next closing.
+This is a Python project to predict if the price over the next 7 trading days will go up or down.
+The closer the value is to one, the greater the chance that the price will rise.
+The response also returns the train and tests accuracy and precision, validated using a method that respect the time series order.
 
 ## Installation
 
-Clone the github repository and access its folder
+Before running the api, make sure you have docker installed on your machine.
+
+1-Create a folder and Clone the github repository into it
 
 ```bash
-git clone https://github.com/juniormach96/stocks
-```
-```bash
-cd stocks
+git clone https://github.com/juniormach96/stocks .
 ```
 
-Make a Virtual environement and activate it
+2-Build the docker-compose services
+
 ```bash
-python -m venv myenv
-```
-```bash
-myenv\Scripts\Activate.ps1
+docker-compose up --build
 ```
 
-Install the requirements
-```bash
-pip install requirements.txt
-```
-
-(Optional) Install a jupyter kernel inside the virtual environement if you want to run the jupyter notebooks
-```bash
-python -m ipykernel install --name=myenv
-```
 ## Usage
 
-Run the main.py file to make predictions of all stocks
-```bash
-python main.py
-```
+Access the endpoints through http://localhost:5000/docs
+
+## Future improvements
+
+- Write more tests on celery and api also
+- Tests more machine learning algorithms
+- Hyperparameter tuning the algos with best scores
