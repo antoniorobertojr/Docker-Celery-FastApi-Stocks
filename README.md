@@ -2,7 +2,7 @@
 
 This is a Python project to predict if the price over the next 7 trading days will go up or down.
 The closer the value is to one, the greater the chance that the price will rise.
-The response also returns the train and tests accuracy and precision, validated using a method that respect the time series order.
+The response also returns the train and tests accuracy and precision, validated using a method that respects the time series order.
 
 ## Installation
 
@@ -26,6 +26,6 @@ Access the endpoints through http://localhost:5000/docs
 
 ## Future improvements
 
-- Write more tests on celery and api also
+- Write more tests on celery and api as well
 - Tests more machine learning algorithms
 - Hyperparameter tuning the algos with best scores
