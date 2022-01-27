@@ -101,6 +101,17 @@ def drop_live_data(df):
     return df
 
 
+def clean_date(df, date_col, drop=True):
+    df[date_col] = pd.to_datetime(df[date_col])
+    #df = df.sort_values(date_col).reset_index(drop=True)
+    df['weekday'] = df[date_col].dt.weekday
+    df['month'] = df[date_col].dt.month
+    df['year'] = df[date_col].dt.year
+    if drop:
+        return df.drop([date_col], axis=1)
+    return df
+
+
 def separate_predict_data(df):
     """
     Separate data where the predictions will be made.
@@ -115,17 +126,6 @@ def separate_predict_data(df):
     selected_features = ['Variation', 'weekday', 'month', 'target',
                          'avg_last_30_Open', 'avg_last_30_Variation', 'avg_last_30_Volume']
     return processed_df[selected_features], to_predict[selected_features]
-
-
-def clean_date(df, date_col, drop=True):
-    df[date_col] = pd.to_datetime(df[date_col])
-    #df = df.sort_values(date_col).reset_index(drop=True)
-    df['weekday'] = df[date_col].dt.weekday
-    df['month'] = df[date_col].dt.month
-    df['year'] = df[date_col].dt.year
-    if drop:
-        return df.drop([date_col], axis=1)
-    return df
 
 
 def select_features(corr_limit=0.5, *args):
@@ -159,9 +159,8 @@ def pipeline(raw_df):
     "return, variation, moving_average from some features and target"
     """
 
-    features = [
-        'Date', 'High', 'Low', 'Open', 'Volume',
-        'Adj Close', 'Symbol', 'Variation']
+    features = ['Date', 'High', 'Low', 'Open',
+                'Volume', 'Adj Close', 'Symbol', 'Variation']
 
     processed_df, to_predict = (
         raw_df.
