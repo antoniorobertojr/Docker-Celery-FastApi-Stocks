@@ -104,9 +104,9 @@ def drop_live_data(df):
 def clean_date(df, date_col, drop=True):
     df[date_col] = pd.to_datetime(df[date_col])
     #df = df.sort_values(date_col).reset_index(drop=True)
-    df['weekday'] = df[date_col].dt.weekday
-    df['month'] = df[date_col].dt.month
-    df['year'] = df[date_col].dt.year
+    df['weekday'] = df[date_col].dt.weekday.astype(int)
+    df['month'] = df[date_col].dt.month.astype(int)
+    df['year'] = df[date_col].dt.year.astype(int)
     if drop:
         return df.drop([date_col], axis=1)
     return df
