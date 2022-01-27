@@ -13,8 +13,9 @@ def pipeline(*args):
     test = processed_df.iloc[n:]
 
     # Start experiment
-    s = setup(
+    setup(
         train,
+        preprocess=False,
         test_data=test,
         target="target",
         silent=True,
@@ -33,8 +34,7 @@ def pipeline(*args):
     # Predict
     print(train.columns)
     print(to_predict.columns)
-    result = predict_model(
-        lgbm, data=test)
+    result = predict_model(lgbm, data=test)
     result = result.fillna('')
     # Calculate model score
     features = processed_df.drop('target', axis=1)
