@@ -107,6 +107,7 @@ def clean_date(df, date_col, drop=True):
     df['weekday'] = df[date_col].dt.weekday.astype(int)
     df['month'] = df[date_col].dt.month.astype(int)
     df['year'] = df[date_col].dt.year.astype(int)
+    print(df.dtypes)
     if drop:
         return df.drop([date_col], axis=1)
     return df

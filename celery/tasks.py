@@ -19,7 +19,7 @@ def main(self, ticker):
         processed_df, to_predict = transform.pipeline(raw_df)
         # Predict
         predictions = predict.pipeline(processed_df, to_predict)
-        predictions[0]['ticker'] = ticker
+        predictions['ticker'] = ticker
         return predictions
     except Exception as ex:
         self.update_state(
